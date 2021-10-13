@@ -1,3 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 #header {
     background-color: #e63c1e;
+    color: white;
+    padding: 10px 20px;
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 2px;
+}
+
+input {
+    width: 50%;
+    margin-right: 5px;
+    margin-left: 20px;
+    padding: 10px;
+    font-size: 12px;
+}
+
+#addBtn {
+    width: 15%;
+    padding: 10px;
+    margin-left: 0;
+    background: #e63c1e;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+    border: none;
+}
+
+#addBtn:hover {
+    background: rgba(238, 101, 51, 0.5);
+}
+
+ul li {
+    cursor: pointer;
+    position: relative;
+    list-style-type: none;
+    font-size: 14px;
+    transition: 0.2s;
+    padding: 12px 8px 12px 40px;
+}
+
+ul li.checked {
+    background: #888;
+    color: #fff;
+    text-decoration: line-through;
+}
+
+ul li.checked::before {
+    content: "";
+    position: absolute;
+    border-color: #fff;
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    top: 10px;
+    left: 16px;
+    transform: rotate(45deg);
+    height: 15px;
+    width: 7px;
 }
