@@ -51,6 +51,19 @@ function loadHome() {
             }
         }
 
+        done_undone(check) {
+            const todoIndex = todoList.findIndex((task) => task.id == check);
+            console.log(todoList[todoIndex].isDone);
+            todoList[todoIndex].isDone == false ? todoList[todoIndex].isDone = true : todoList[todoIndex].isDone = false;
+            this.display();
+        }
+
+        delete(item) {
+            const delIndex = todoList.findIndex((task) => task.id == item);
+            todoList.splice(delIndex, 1);
+            this.display;
+        }
+
         display() {
             this.ulTask.innerHTML = '';
             
