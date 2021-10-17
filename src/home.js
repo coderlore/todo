@@ -3,6 +3,7 @@ import addToDo from "./addToDo.js";
 function loadHome() {
     const content = document.querySelector('#content');
     const homePage = document.createElement('div');
+    homePage.id = 'homepage';
 
     const project1 = document.createElement('h2');
     project1.innerHTML = 'Project Name Placeholder'
@@ -53,6 +54,7 @@ function loadHome() {
 
         done_undone(check) {
             const todoIndex = todoList.findIndex((task) => task.id == check);
+            // Add if/else statement to get rid of error
             console.log(todoList[todoIndex].isDone);
             todoList[todoIndex].isDone == false ? todoList[todoIndex].isDone = true : todoList[todoIndex].isDone = false;
             this.display();
@@ -61,7 +63,7 @@ function loadHome() {
         delete(item) {
             const delIndex = todoList.findIndex((task) => task.id == item);
             todoList.splice(delIndex, 1);
-            this.display;
+            this.display();
         }
 
         display() {
@@ -74,12 +76,12 @@ function loadHome() {
                 liTask.innerText = object_item.taskInput;
                 liTask.setAttribute('data-id', object_item.id);
                 delBtn.setAttribute('data-id', object_item.id);
-                delBtn.classList.add('far', 'far-trash-alt');
+                delBtn.classList.add('far', 'fa-trash-alt');
                 liTask.appendChild(delBtn);
 
                 delBtn.addEventListener('click', function(e) {
                     const deleteId = e.target.getAttribute('data-id');
-                    myToDoList.deleteElement(deleteId);
+                    myToDoList.delete(deleteId);
                 })
 
                 liTask.addEventListener('click', function(e) {
