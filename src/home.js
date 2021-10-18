@@ -28,8 +28,8 @@ function loadHome() {
 
     // Now add in the JS part
     
-    //addToDo()
-    const todoList = [];
+    addToDo()
+    /*const todoList = [];
 
     class ToDo {
         constructor(task) {
@@ -103,7 +103,7 @@ function loadHome() {
     myToDoList = new ToDo(list);
     document.querySelector('#addBtn').addEventListener('click', function() {
     myToDoList.add()
-    })
+    })*/
 
 }
 
