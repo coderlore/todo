@@ -11,7 +11,9 @@ function addProject() {
             if (projectInput == "") {
                 alert('No task was entered. Try again!');
             } else {
-                const projectkObject = {
+                const projectObject = {
+                    // might need to change from length to a counter
+                    // there's an issue with deleting and adding a new task
                     id: todoList.length,
                     taskInput: taskInput,
                 }
