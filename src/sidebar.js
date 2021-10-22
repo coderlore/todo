@@ -95,9 +95,10 @@ function sidebar() {
                     id: projectAll.length,
                     projectInput: projectInput,
                 }
-                projectAll.unshift(projectObject);
+                projectAll.push(projectObject);
             this.display();
             document.querySelector('#inputProject').value = '';
+            modal.style.display = 'none';
             }
         }
 
@@ -124,6 +125,7 @@ function sidebar() {
     myProjectList = new Project(list);
     addProjectBtn.addEventListener('click', function() {
         myProjectList.add();
+        //console.table(projectAll)
     })
 }
 

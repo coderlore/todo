@@ -55,14 +55,18 @@ input {
     background: rgba(238, 101, 51, 0.5);
 }
 
-ul li {
+#tasks {
     cursor: pointer;
+    margin-left: 250px;
+}
+
+ul li {  
     position: relative;
     list-style-type: none;
     font-size: 14px;
     transition: 0.2s;
-    padding: 12px 8px 12px 40px;
-    margin-left: 250px;
+    padding: 12px 8px 12px 10px;
+    /*margin-left: 250px;*/
 }
 
 ul li.checked {

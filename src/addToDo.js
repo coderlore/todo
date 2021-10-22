@@ -1,4 +1,4 @@
-
+import sidebar from "./sidebar.js";
 
 function addToDo() {
     const todoList = [];
@@ -9,6 +9,7 @@ function addToDo() {
         };
 
         add() {
+            //console.table(projectAll)
             const taskInput = document.querySelector('#inputText').value;
             if (taskInput == "") {
                 alert('No task was entered. Try again!');
