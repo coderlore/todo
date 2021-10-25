@@ -1,3 +1,9 @@
+export const projectAll = [{
+    id: 0, 
+    projectInput: 'Project 1',
+    taskList: {},
+}]
+
 function sidebar() {
     const content = document.querySelector('#content');
     content.id = 'content';
@@ -80,7 +86,11 @@ function sidebar() {
         }
     })
 
-    const projectAll = [];
+    /*const projectAll = [{
+        id: 0, 
+        projectInput: 'Project 1'
+    }];*/
+
     class Project {
         constructor(project) {
             this.ulProject = project; 
@@ -94,6 +104,7 @@ function sidebar() {
                 const projectObject = {
                     id: projectAll.length,
                     projectInput: projectInput,
+                    taskList: {},
                 }
                 projectAll.push(projectObject);
             this.display();
@@ -123,6 +134,7 @@ function sidebar() {
     const list = document.querySelector('#projects');
     let myProjectList = [];
     myProjectList = new Project(list);
+    myProjectList.display();
     addProjectBtn.addEventListener('click', function() {
         myProjectList.add();
         //console.table(projectAll)

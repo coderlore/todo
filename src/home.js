@@ -1,4 +1,5 @@
 import addToDo from "./addToDo.js";
+import { projectAll } from "./sidebar.js"
 
 function loadHome() {
     const content = document.querySelector('#content');
@@ -6,7 +7,7 @@ function loadHome() {
     homePage.id = 'homepage';
 
     const project1 = document.createElement('h2');
-    project1.innerHTML = 'Project Name Placeholder'
+    project1.innerHTML = `${projectAll[0].projectInput}`
     homePage.appendChild(project1);
 
     const inputTask = document.createElement('input');

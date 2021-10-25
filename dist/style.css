@@ -133,3 +133,12 @@ ul li.checked::before {
     text-decoration: none;
     cursor: pointer;
 }
+
+#projects li{
+    font-size: larger;
+    cursor: pointer;
+}
+
+#projects li:hover{
+    background-color: rgba(167, 142, 142, 0.4)
+}
