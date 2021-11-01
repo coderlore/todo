@@ -1,7 +1,7 @@
 import sidebar from "./sidebar.js";
 import { projectAll } from "./sidebar.js"
 
-console.table(projectAll[2]);
+//console.table(projectAll[2]);
 
 function addToDo() {
     const todoList = [];
@@ -23,9 +23,9 @@ function addToDo() {
                     isDone: false,
                 }
             todoList.push(taskObject);
-            //projectAll.push(todoList);
-            let newData = [...projectAll, todoList]
-            console.table(newData)
+            projectAll[0]['taskList'] = todoList;
+            //console.table(toDoList)
+            //console.log(projectAll[0]['taskList'])
             this.display();
             document.querySelector('#inputText').value = '';
             }

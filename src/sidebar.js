@@ -121,12 +121,20 @@ function sidebar() {
 
                 liProject.innerText = object_item.projectInput;
                 liProject.setAttribute('data-id', object_item.id);
+                liProject.setAttribute('active', 'none');
+                //liProject.setAttribute('active','show');
 
                 liProject.addEventListener('click', function(e) {
+                    Array.from(liProject.parentNode.children)
+                        .forEach(k => k.classList.remove('active'));
                     const selectId = e.target.getAttribute('data-id');
+                    liProject.setAttribute('active','show');
                 })
 
                 this.ulProject.appendChild(liProject);
+                if (object_item.id == (projectAll.length - 1))  {
+                    liProject.setAttribute('active', 'show');
+                }
             })
         }
     };
