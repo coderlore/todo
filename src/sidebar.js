@@ -120,16 +120,21 @@ function sidebar() {
                 const liProject = document.createElement('li');
 
                 liProject.innerText = object_item.projectInput;
+                liProject.removeAttribute('active', 'show');
                 liProject.setAttribute('data-id', object_item.id);
                 liProject.setAttribute('active', 'none');
+                liProject.classList.add('project');
                 //liProject.setAttribute('active','show');
 
-                liProject.addEventListener('click', function(e) {
-                    Array.from(liProject.parentNode.children)
-                        .forEach(k => k.classList.remove('active'));
+                /*liProject.addEventListener('click', function(e) {
+                    // see how I did it in the restaurant project
                     const selectId = e.target.getAttribute('data-id');
+                    //alert(selectId);
                     liProject.setAttribute('active','show');
-                })
+                })*/
+                projectList.addEventListener('click', (e) => {
+                    setActive(liProject);
+                });
 
                 this.ulProject.appendChild(liProject);
                 if (object_item.id == (projectAll.length - 1))  {
@@ -147,6 +152,26 @@ function sidebar() {
         myProjectList.add();
         //console.table(projectAll)
     })
+}
+
+function setActive(li) {
+    document.querySelectorAll('.project').forEach(li => {
+        li.addEventListener('click',() => {
+            const sidebar = li.parentElement;
+            const contentDiv = sidebar.parentElement;
+            const tabData = li.dataset.forTab;
+            const tabActivate = contentDiv.querySelector(`.tab-content[data-id="${tabData}"]`)
+
+            sidebar.querySelectorAll('.page-nav').forEach(li => {
+                li.classList.remove('active')
+            })
+            contentDiv.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('show')
+            })
+            li.classList.add('active')
+            tabActivate.classList.add('show')
+        })
+    });
 }
 
 export default sidebar

@@ -4,6 +4,7 @@ import { projectAll } from "./sidebar.js"
 function loadHome() {
     const content = document.querySelector('#content');
     const homePage = document.createElement('div');
+    homePage.setAttribute('data-tab-content', 'home');
     homePage.id = 'homepage';
 
     const project1 = document.createElement('h2');
