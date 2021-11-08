@@ -141,7 +141,7 @@ function sidebar() {
 
                 this.ulProject.appendChild(liProject);
                 if (object_item.id == (projectAll.length - 1))  {
-                    liProject.setAttribute('active', 'show');
+                    liProject.setAttribute('content-active', 'show');
                 }
             })
         }
@@ -153,7 +153,12 @@ function sidebar() {
     myProjectList.display();
     addProjectBtn.addEventListener('click', function() {
         myProjectList.add();
-        //console.table(projectAll)
+        setActive(addProjectBtn);
+        const contentDiv = document.querySelector('#content');
+        contentDiv.querySelectorAll('.tab-content').forEach(tab => {
+            tab.setAttribute('content-active','none')
+        })
+        //tabActivate.setAttribute('content-active','show')
     })
 }
 
@@ -171,10 +176,11 @@ function setActive(li) {
                 li.setAttribute('active', 'none')
             })
             contentDiv.querySelectorAll('.tab-content').forEach(tab => {
-                tab.setAttribute('active','none')
+                tab.setAttribute('content-active','none')
             })
             li.setAttribute('active','show')
-            //tabActivate.setAttribute('active','show')
+            tabActivate.setAttribute('content-active','show')
+            console.log(tabActivate)
         })
     });
 }

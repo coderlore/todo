@@ -3,10 +3,10 @@ import { projectAll } from "./sidebar.js"
 
 let count = 0;
 function loadHome() {   
-    console.log(count);
     const content = document.querySelector('#content');
     const homePage = document.createElement('div');
     homePage.setAttribute('data-id', `${count}`);
+    homePage.setAttribute('content-active','show');
     homePage.classList = 'tab-content';
     homePage.id = 'homepage';
 
