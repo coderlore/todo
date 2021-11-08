@@ -1,14 +1,17 @@
 import addToDo from "./addToDo.js";
 import { projectAll } from "./sidebar.js"
 
-function loadHome() {
+let count = 0;
+function loadHome() {   
+    console.log(count);
     const content = document.querySelector('#content');
     const homePage = document.createElement('div');
-    homePage.setAttribute('data-tab-content', 'home');
+    homePage.setAttribute('data-id', `${count}`);
+    homePage.classList = 'tab-content';
     homePage.id = 'homepage';
 
     const project1 = document.createElement('h2');
-    project1.innerHTML = `${projectAll[0].projectInput}`
+    project1.innerHTML = projectAll[`${count}`].projectInput
     homePage.appendChild(project1);
 
     const inputTask = document.createElement('input');
@@ -28,6 +31,7 @@ function loadHome() {
     content.appendChild(currentList);
     document.body.appendChild(content)
 
+    count++
     // Now add in the JS part
     
     addToDo()

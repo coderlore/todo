@@ -4,6 +4,8 @@ export const projectAll = [{
     taskList: {},
 }]
 
+import loadHome from "./home.js";
+
 function sidebar() {
     const content = document.querySelector('#content');
     content.id = 'content';
@@ -110,6 +112,7 @@ function sidebar() {
             this.display();
             document.querySelector('#inputProject').value = '';
             modal.style.display = 'none';
+            loadHome();
             }
         }
 
@@ -158,18 +161,20 @@ function setActive(li) {
     document.querySelectorAll('.project').forEach(li => {
         li.addEventListener('click',() => {
             const sidebar = li.parentElement;
-            const contentDiv = sidebar.parentElement;
-            const tabData = li.dataset.forTab;
+            const navDiv = sidebar.parentElement;
+            const contentDiv = navDiv.parentElement;
+            //const tabData = li.dataset.forTab;
+            const tabData = li.getAttribute('data-id')
             const tabActivate = contentDiv.querySelector(`.tab-content[data-id="${tabData}"]`)
 
-            sidebar.querySelectorAll('.page-nav').forEach(li => {
-                li.classList.remove('active')
+            sidebar.querySelectorAll('.project').forEach(li => {
+                li.setAttribute('active', 'none')
             })
             contentDiv.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('show')
+                tab.setAttribute('active','none')
             })
-            li.classList.add('active')
-            tabActivate.classList.add('show')
+            li.setAttribute('active','show')
+            //tabActivate.setAttribute('active','show')
         })
     });
 }
