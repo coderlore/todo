@@ -153,12 +153,14 @@ function sidebar() {
     myProjectList.display();
     addProjectBtn.addEventListener('click', function() {
         myProjectList.add();
-        setActive(addProjectBtn);
+        //setActive(addProjectBtn);
         const contentDiv = document.querySelector('#content');
+        let whichOne = projectAll.length - 1;
+        let activeProject = contentDiv.querySelector(`.tab-content[data-id="${whichOne}"]`);
         contentDiv.querySelectorAll('.tab-content').forEach(tab => {
             tab.setAttribute('content-active','none')
         })
-        //tabActivate.setAttribute('content-active','show')
+        activeProject.setAttribute('content-active','show')
     })
 }
 
@@ -180,7 +182,6 @@ function setActive(li) {
             })
             li.setAttribute('active','show')
             tabActivate.setAttribute('content-active','show')
-            console.log(tabActivate)
         })
     });
 }
