@@ -1,5 +1,6 @@
 import sidebar from "./sidebar.js";
 import { projectAll } from "./sidebar.js"
+import { count } from "./home.js"
 
 //console.table(projectAll[2]);
 
@@ -15,7 +16,7 @@ function addToDo() {
             //console.table(projectAll)
             const taskInput = document.querySelector('#inputText').value;
             if (taskInput == "") {
-                alert('No task was entered. Try again!');
+                //alert('No task was entered. Try again!');
             } else {
                 const taskObject = {
                     id: todoList.length,
@@ -24,6 +25,7 @@ function addToDo() {
                 }
             todoList.push(taskObject);
             projectAll[0]['taskList'] = todoList;
+            // need to update index 
             //console.table(toDoList)
             //console.log(projectAll[0]['taskList'])
             this.display();
@@ -34,7 +36,7 @@ function addToDo() {
         done_undone(check) {
             const todoIndex = todoList.findIndex((task) => task.id == check);
             // Add if/else statement to get rid of error
-            console.log(todoList[todoIndex].isDone);
+            //console.log(todoList[todoIndex].isDone);
             todoList[todoIndex].isDone == false ? todoList[todoIndex].isDone = true : todoList[todoIndex].isDone = false;
             this.display();
         }

@@ -1,7 +1,7 @@
 import addToDo from "./addToDo.js";
 import { projectAll } from "./sidebar.js"
 
-let count = 0;
+export let count = 0;
 function loadHome() {   
     const content = document.querySelector('#content');
     const homePage = document.createElement('div');
@@ -28,7 +28,7 @@ function loadHome() {
 
     const currentList = document.createElement('ul');
     currentList.id = 'tasks'
-    content.appendChild(currentList);
+    homePage.appendChild(currentList);
     document.body.appendChild(content)
 
     count++
