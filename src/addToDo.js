@@ -1,6 +1,5 @@
 import sidebar from "./sidebar.js";
 import { projectAll } from "./sidebar.js"
-import { count } from "./home.js"
 
 //console.table(projectAll[2]);
 
@@ -14,7 +13,7 @@ function addToDo() {
 
         add() {
             //console.table(projectAll)
-            const taskInput = document.querySelector('#inputText').value;
+            const taskInput = document.querySelector(`#inputText${whichOne}`).value;
             if (taskInput == "") {
                 //alert('No task was entered. Try again!');
             } else {
@@ -24,12 +23,13 @@ function addToDo() {
                     isDone: false,
                 }
             todoList.push(taskObject);
-            projectAll[0]['taskList'] = todoList;
-            // need to update index 
-            //console.table(toDoList)
-            //console.log(projectAll[0]['taskList'])
+
+            const contentDiv = document.querySelector('#content');
+
+            projectAll[`${whichOne}`]['taskList'] = todoList;
+            console.log(todoList)
             this.display();
-            document.querySelector('#inputText').value = '';
+            document.querySelector(`#inputText${whichOne}`).value = '';
             }
         }
 
@@ -79,10 +79,12 @@ function addToDo() {
         }
     };
 
-    const list = document.querySelector('#tasks');
+    let whichOne = projectAll.length - 1;
+    const list = document.querySelector(`#tasks${whichOne}`);
     let myToDoList = [];
     myToDoList = new ToDo(list);
-    document.querySelector('#addBtn').addEventListener('click', function() {
+    // add in selector for all 
+    document.querySelector(`#addBtn${whichOne}`).addEventListener('click', function() {
         myToDoList.add()
     })
 }

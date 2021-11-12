@@ -1,7 +1,7 @@
 import addToDo from "./addToDo.js";
 import { projectAll } from "./sidebar.js"
 
-export let count = 0;
+let count = 0;
 function loadHome() {   
     const content = document.querySelector('#content');
     const homePage = document.createElement('div');
@@ -15,19 +15,19 @@ function loadHome() {
     homePage.appendChild(project1);
 
     const inputTask = document.createElement('input');
-    inputTask.id = 'inputText';
+    inputTask.id = `inputText${count}`;
     inputTask.placeholder = 'Enter task here';
     homePage.appendChild(inputTask);
 
     const taskBtn = document.createElement('button');
-    taskBtn.id = 'addBtn';
+    taskBtn.id = `addBtn${count}`;
     taskBtn.innerHTML = 'Add Task';
     homePage.appendChild(taskBtn);
 
     content.appendChild(homePage);
 
     const currentList = document.createElement('ul');
-    currentList.id = 'tasks'
+    currentList.id = `tasks${count}`;
     homePage.appendChild(currentList);
     document.body.appendChild(content)
 
