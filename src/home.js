@@ -21,6 +21,7 @@ function loadHome() {
 
     const taskBtn = document.createElement('button');
     taskBtn.id = `addBtn${count}`;
+    taskBtn.classList = 'addBtn';
     taskBtn.innerHTML = 'Add Task';
     homePage.appendChild(taskBtn);
 

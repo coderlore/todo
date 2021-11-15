@@ -36,8 +36,12 @@ function addToDo() {
         done_undone(check) {
             const todoIndex = todoList.findIndex((task) => task.id == check);
             // Add if/else statement to get rid of error
-            //console.log(todoList[todoIndex].isDone);
-            todoList[todoIndex].isDone == false ? todoList[todoIndex].isDone = true : todoList[todoIndex].isDone = false;
+            if (todoList[todoIndex].isDone == undefined) {
+                alert('it is undefined')
+            } else {
+                todoList[todoIndex].isDone == false ? todoList[todoIndex].isDone = true : todoList[todoIndex].isDone = false;
+            }
+            //todoList[todoIndex].isDone == false ? todoList[todoIndex].isDone = true : todoList[todoIndex].isDone = false;
             this.display();
         }
 
@@ -52,20 +56,27 @@ function addToDo() {
             
             todoList.forEach((object_item) => {
                 const liTask = document.createElement('li');
+                const checkBtn = document.createElement('i');
                 const delBtn = document.createElement('i');
 
                 liTask.innerText = object_item.taskInput;
                 liTask.setAttribute('data-id', object_item.id);
+
+                checkBtn.setAttribute('data-id', object_item.id);
+                checkBtn.classList.add('far', 'fa-check-square', 'checkbox');
+
                 delBtn.setAttribute('data-id', object_item.id);
-                delBtn.classList.add('far', 'fa-trash-alt');
+                delBtn.classList.add('far', 'fa-trash-alt', 'trash');
+
                 liTask.appendChild(delBtn);
+                liTask.appendChild(checkBtn);
 
                 delBtn.addEventListener('click', function(e) {
                     const deleteId = e.target.getAttribute('data-id');
                     myToDoList.delete(deleteId);
                 })
 
-                liTask.addEventListener('click', function(e) {
+                checkBtn.addEventListener('click', function(e) {
                     const selectId = e.target.getAttribute('data-id');
                     myToDoList.done_undone(selectId);
                 })
@@ -83,7 +94,6 @@ function addToDo() {
     const list = document.querySelector(`#tasks${whichOne}`);
     let myToDoList = [];
     myToDoList = new ToDo(list);
-    // add in selector for all 
     document.querySelector(`#addBtn${whichOne}`).addEventListener('click', function() {
         myToDoList.add()
     })
