@@ -16,6 +16,7 @@ function loadHome() {
 
     const inputTask = document.createElement('input');
     inputTask.id = `inputText${count}`;
+    inputTask.classList = 'inputText';
     inputTask.placeholder = 'Enter task here';
     homePage.appendChild(inputTask);
 
@@ -29,11 +30,11 @@ function loadHome() {
 
     const currentList = document.createElement('ul');
     currentList.id = `tasks${count}`;
+    currentList.classList = 'tasks';
     homePage.appendChild(currentList);
     document.body.appendChild(content)
 
     count++
-    // Now add in the JS part
     
     addToDo()
     /*const todoList = [];

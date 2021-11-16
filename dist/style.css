@@ -27,12 +27,18 @@ h2 {
     cursor: pointer;
 }
 
+#projectBtn:hover {
+    color: #e63c1e;
+    background-color: white;
+}
+
 nav {
     height: 100%;
     width: 250px;
     position: fixed;
     z-index: 1;
     overflow-x: hidden;
+    background-color: #ede9e8;
 }
 
 #homepage {
@@ -45,6 +51,10 @@ input {
     margin-left: 10px;
     padding: 10px;
     font-size: 12px;
+}
+
+.inputText {
+    margin-bottom: 20px;
 }
 
 .addBtn {
@@ -65,18 +75,12 @@ input {
     background: rgba(238, 101, 51, 0.5);
 }
 
-.tasks {
-    cursor: pointer;
-    /*margin-left: 250px;*/
-}
-
 ul li {  
     position: relative;
     list-style-type: none;
     font-size: 14px;
     transition: 0.2s;
     padding: 12px 8px 12px 10px;
-    /*margin-left: 250px;*/
 }
 
 ul li.checked {
@@ -86,14 +90,12 @@ ul li.checked {
 }
 
 ul li.checked::before {
-    /*content: "";*/
     position: absolute;
     border-color: #fff;
     border-style: solid;
     border-width: 0 2px 2px 0;
     top: 10px;
     left: 16px;
-    /*transform: rotate(45deg);*/
     height: 15px;
     width: 7px;
 }
@@ -105,15 +107,13 @@ ul li.checked::before {
 }
 
 .trash:hover {
-    background-color: tomato;
-    color: white;
+    color: tomato;
     cursor: pointer;
 }
 
 .checkbox:hover {
-    background-color: #888;
-    color: white;
     cursor: pointer;
+    text-decoration: line-through;
 }
 
 .modal {
@@ -135,17 +135,28 @@ ul li.checked::before {
     margin: auto;
     border: 1px solid #888;
     width: 40%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 h3 {
-    padding: 10px 10px;
+    padding: 10px 0px;
+    width: 80%;
+    align-items: flex-start;
+}
+
+#inputProject {
+    width: 100%;
 }
 
 #cancelBtn, #addProjectBtn {
-    display: inline-block;
+    display: block;
     cursor: pointer;
     padding: 5px;
-    margin: 5px 5px 20px;
+    margin: 15px 0px 20px 0px;
+    width: 40%;
+    align-content: flex-start;
 }
 
 .close {

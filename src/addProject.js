@@ -1,52 +1,71 @@
-function addProject() {
-    const projectList = [];
+import { projectAll } from "./sidebar.js"
+import loadHome from "./home.js";
+import setActive from "./setActive.js"
 
+function addProject() {
     class Project {
-        constructor(task) {
-            this.ulTask = task; 
+        constructor(project) {
+            this.ulProject = project; 
         };
 
         add() {
-            const projectInput = document.querySelector('#inputText').value;
+            const myModal = document.querySelector('#myModal');
+            let projectInput = document.querySelector('#inputProject').value;
             if (projectInput == "") {
                 alert('No task was entered. Try again!');
             } else {
                 const projectObject = {
-                    // might need to change from length to a counter
-                    // there's an issue with deleting and adding a new task
-                    id: todoList.length,
-                    taskInput: taskInput,
+                    id: projectAll.length,
+                    projectInput: projectInput,
+                    taskList: {},
                 }
-            todoList.unshift(projectObject);
+                projectAll.push(projectObject);
             this.display();
-            document.querySelector('#inputText').value = '';
+            document.querySelector('#inputProject').value = '';
+            myModal.style.display = 'none';
+            loadHome();
             }
         }
 
         display() {
-            this.ulTask.innerHTML = '';
+            this.ulProject.innerHTML = '';
+            const projectList = document.querySelector('#projects');
             
-            todoList.forEach((object_item) => {
-                const liTask = document.createElement('li');
+            projectAll.forEach((object_item) => {
+                const liProject = document.createElement('li');
 
-                liTask.innerText = object_item.taskInput;
-                liTask.setAttribute('data-id', object_item.id);
+                liProject.innerText = object_item.projectInput;
+                liProject.removeAttribute('active', 'show');
+                liProject.setAttribute('data-id', object_item.id);
+                liProject.setAttribute('active', 'none');
+                liProject.classList.add('project');
 
-                liTask.addEventListener('click', function(e) {
-                    const selectId = e.target.getAttribute('data-id');
-                })
+                projectList.addEventListener('click', (e) => {
+                    setActive(liProject);
+                });
 
-                this.ulTask.appendChild(liTask);
+                this.ulProject.appendChild(liProject);
+                if (object_item.id == (projectAll.length - 1))  {
+                    liProject.setAttribute('content-active', 'show');
+                }
             })
         }
     };
 
-    const list = document.querySelector('#tasks');
-    let myToDoList = [];
+    const list = document.querySelector('#projects');
+    let myProjectList = [];
     myProjectList = new Project(list);
-    document.querySelector('#addBtn').addEventListener('click', function() {
-    myProjectList.add()
+    myProjectList.display();
+    addProjectBtn.addEventListener('click', function() {
+        myProjectList.add();
+        const contentDiv = document.querySelector('#content');
+        let whichOne = projectAll.length - 1;
+        let activeProject = contentDiv.querySelector(`.tab-content[data-id="${whichOne}"]`);
+        contentDiv.querySelectorAll('.tab-content').forEach(tab => {
+            tab.setAttribute('content-active','none')
+        })
+        activeProject.setAttribute('content-active','show')
     })
 }
 
-export default addToDo
+export default addProject

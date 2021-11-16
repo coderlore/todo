@@ -1,8 +1,6 @@
 import sidebar from "./sidebar.js";
 import { projectAll } from "./sidebar.js"
 
-//console.table(projectAll[2]);
-
 function addToDo() {
     const todoList = [];
 
@@ -12,7 +10,6 @@ function addToDo() {
         };
 
         add() {
-            //console.table(projectAll)
             const taskInput = document.querySelector(`#inputText${whichOne}`).value;
             if (taskInput == "") {
                 //alert('No task was entered. Try again!');
@@ -27,7 +24,6 @@ function addToDo() {
             const contentDiv = document.querySelector('#content');
 
             projectAll[`${whichOne}`]['taskList'] = todoList;
-            console.log(todoList)
             this.display();
             document.querySelector(`#inputText${whichOne}`).value = '';
             }
@@ -35,13 +31,7 @@ function addToDo() {
 
         done_undone(check) {
             const todoIndex = todoList.findIndex((task) => task.id == check);
-            // Add if/else statement to get rid of error
-            if (todoList[todoIndex].isDone == undefined) {
-                alert('it is undefined')
-            } else {
-                todoList[todoIndex].isDone == false ? todoList[todoIndex].isDone = true : todoList[todoIndex].isDone = false;
-            }
-            //todoList[todoIndex].isDone == false ? todoList[todoIndex].isDone = true : todoList[todoIndex].isDone = false;
+            todoList[todoIndex].isDone == false ? todoList[todoIndex].isDone = true : todoList[todoIndex].isDone = false;
             this.display();
         }
 
